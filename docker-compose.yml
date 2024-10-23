@@ -20,7 +20,7 @@ services:
     environment:
       POSTGRES_USER: loc-pg-user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: appdb 
+      POSTGRES_DB: MoviesDb 
     volumes:
       - dbdata:/var/lib/postgresql/data
     ports:
