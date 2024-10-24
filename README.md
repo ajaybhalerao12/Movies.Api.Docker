@@ -32,10 +32,23 @@ To run this project locally, you'll need to have the following installed:
     - The API will be available at http://localhost:5000/api/movies. 
 
 ### Usage
-    - Add a Movie: Send a POST request to /api/movies.
-    - Get Movies: Send a GET request to /api/movies.
-    - Update a Movie: Send a PUT request to /api/movies/{id}.
-    - Delete a Movie: Send a DELETE request to /api/movies/{id}.
+1.  Add a Movie: Send a POST request to /api/movies.
+    - Example: To create a new movie, use the following 
+        ```sh
+            curl --location 'https://localhost:7062/api/movies' \
+            --header 'Content-Type: application/json' \
+            --data '{
+                "title": "Inception",
+                "genre": "Sci-Fi",
+                "releaseDate": "2024-07-18T00:00:00Z",
+                "director": "Christopher Nolan",
+                "rating": 8.8,
+                "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology."
+            }'
+        ```
+2. Get Movies: Send a GET request to /api/movies.
+3. Update a Movie: Send a PUT request to /api/movies/{id}.
+4. Delete a Movie: Send a DELETE request to /api/movies/{id}.
 
 ### Contributing
 Contributions are welcome! Fork this repository and submit a pull request for any enhancements or bug fixes.
