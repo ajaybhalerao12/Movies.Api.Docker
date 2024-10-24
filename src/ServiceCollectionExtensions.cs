@@ -7,9 +7,9 @@ namespace Movies.Api.Docker
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection RegisterCustomServices(this IServiceCollection services)
-        {
-            // Add your custom service registrations here
+        {            
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IRedisCacheService, RedisCacheService>();
             services.AddAutoMapper(typeof(Program));
             return services;
         }
@@ -23,7 +23,7 @@ namespace Movies.Api.Docker
 
             return services;
         }
-
+        
         public static IHealthChecksBuilder AddPostgreSQLHealthCheck(this IHealthChecksBuilder services, IConfiguration configuration)
         {
             services.AddNpgSql(configuration.GetConnectionString("DefaultConnection"));
