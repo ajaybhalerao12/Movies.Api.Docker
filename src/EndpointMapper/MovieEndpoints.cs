@@ -37,5 +37,17 @@ namespace Movies.Api.Docker.EndpointMapper
             }
             return Results.Ok(movie);
         }
+
+        //private static Func<MovieDto, IMovieService, CancellationToken, Task<IResult>> AddMovieAsync()
+        //{
+        //    return async (MovieDto movieDto,
+        //        IMovieService movieService, CancellationToken cancellationToken) =>
+        //    {
+        //        var movie = await movieService.AddMovieAsync(movieDto, cancellationToken);
+        //        return Results.CreatedAtRoute("GetMovieById",
+        //            new { movie.Id },
+        //            movie);
+        //    };
+        //}
     }
 }
