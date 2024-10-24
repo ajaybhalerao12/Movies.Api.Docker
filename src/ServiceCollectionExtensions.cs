@@ -23,5 +23,12 @@ namespace Movies.Api.Docker
 
             return services;
         }
+
+        public static IHealthChecksBuilder AddPostgreSQLHealthCheck(this IHealthChecksBuilder services, IConfiguration configuration)
+        {
+            services.AddNpgSql(configuration.GetConnectionString("DefaultConnection"));
+
+            return services;
+        }
     }
 }
