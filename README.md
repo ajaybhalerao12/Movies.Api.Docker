@@ -32,23 +32,47 @@ To run this project locally, you'll need to have the following installed:
     - The API will be available at http://localhost:5000/api/movies. 
 
 ### Usage
-1.  Add a Movie: Send a POST request to /api/movies.
+1. Add a Movie: Send a POST request to /api/movies.
     - Example: To create a new movie, use the following 
         ```sh
-            curl --location 'https://localhost:7062/api/movies' \
-            --header 'Content-Type: application/json' \
-            --data '{
-                "title": "Inception",
-                "genre": "Sci-Fi",
-                "releaseDate": "2024-07-18T00:00:00Z",
-                "director": "Christopher Nolan",
-                "rating": 8.8,
-                "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology."
-            }'
+        curl --location 'https://localhost:7062/api/movies' \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "title": "Inception",
+            "genre": "Sci-Fi",
+            "releaseDate": "2024-07-18T00:00:00Z",
+            "director": "Christopher Nolan",
+            "rating": 8.8,
+            "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology."
+        }'
         ```
+
 2. Get Movies: Send a GET request to /api/movies.
+    - Example:
+        ```sh
+        curl --location 'https://localhost:7062/api/movies'
+        ```
+
 3. Update a Movie: Send a PUT request to /api/movies/{id}.
+    - Example: To update a movie with id 1, use the following
+        ```sh
+        curl --location --request PUT 'https://localhost:7062/api/movies/1' \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "title": "Inception",
+            "genre": "Sci-Fi",
+            "releaseDate": "2024-07-18T00:00:00Z",
+            "director": "Christopher Nolan",
+            "rating": 9.0,
+            "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology."
+        }'
+        ```
+
 4. Delete a Movie: Send a DELETE request to /api/movies/{id}.
+    - Example: To delete a movie with id 1, use the following
+        ```sh
+        curl --location --request DELETE 'https://localhost:7062/api/movies/1'
+        ```
 
 ### Contributing
 Contributions are welcome! Fork this repository and submit a pull request for any enhancements or bug fixes.
