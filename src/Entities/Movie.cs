@@ -6,7 +6,8 @@ namespace Movies.Api.Docker.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="This is required field")]
         public string Title { get; set; }
         public string Genre { get; set; }
         public DateTime ReleaseDate { get; set; }
