@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Movies.Api.Docker.Database;
 using Movies.Api.Docker.Services;
 
@@ -14,6 +15,21 @@ namespace Movies.Api.Docker
             return services;
         }
 
+        public static IServiceCollection AddSwaggerServices(this IServiceCollection services)
+        {
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Movies API",
+                    Description = "An API for managing movies"
+                });
+            });
+            return services;
+        }
+
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -23,6 +39,7 @@ namespace Movies.Api.Docker
 
             return services;
         }
+
         
         public static IHealthChecksBuilder AddPostgreSQLHealthCheck(this IHealthChecksBuilder services, IConfiguration configuration)
         {

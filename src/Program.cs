@@ -10,10 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services
     .AddCustomDbContext(builder.Configuration)
+    .AddSwaggerServices()
     .RegisterCustomServices()
     .AddHealthChecks()
     .AddPostgreSQLHealthCheck(builder.Configuration);
-
+builder.Services.AddControllers();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("RedisCache");
@@ -27,8 +28,10 @@ var logger = app.Services.GetRequiredService<ILogger<Program>>();
 if(app.Environment.IsDevelopment())
 {
     app.ApplyMigration(logger);
-    app.UseDeveloperExceptionPage();
+    app.RegisterMiddlewares();
 }
+
+app.UseHttpsRedirection();
 app.MapMovieEndpoints();
 
 app.MapHealthChecks("/health", new HealthCheckOptions
